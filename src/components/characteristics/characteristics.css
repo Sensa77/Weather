@@ -1,0 +1,25 @@
+.characteristics__list {
+  display: flex;
+  list-style: none;
+  padding-top: 165px;
+}
+
+.characteristics__item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 200px;
+}
+
+.characteristics__item-title {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 400;
+  opacity: 0.5;
+  margin-bottom: 10px;
+}
+
+.characteristics__item-value {
+  font-size: 28px;
+  line-height: 30px;
+}

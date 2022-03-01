@@ -1,0 +1,90 @@
+.location__city {
+  display: block;
+  font-size: 48px;
+  line-height: 50px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.location__change {
+  display: flex;
+  align-items: center;
+}
+
+.location__input {
+  display: none;
+}
+
+.location__button {
+  display: none;
+}
+
+.location__label {
+  opacity: 0.7;
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
+  margin-right: 20px;
+  border: none;
+  background-color: transparent;
+  color: #fff;
+}
+
+.location__form {
+  position: relative;
+}
+
+.location__input {
+  position: relative;
+  height: 96px;
+  width: 685px;
+  border-radius: 8px;
+  border: none;
+  font-size: 30px;
+  line-height: 30px;
+  padding-left: 15px;
+  background-color: #fff;
+  margin-bottom: 5px;
+}
+
+.location__input::placeholder {
+  font-size: 28px;
+  line-height: 30px;
+  color: #809fbe;
+}
+
+.location__button {
+  position: absolute;
+  right: 34px;
+  top: 35px;
+  right: 30px;
+  border: none;
+  background-color: transparent;
+  color: #809fbe;
+  font-size: 28px;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.location__geolocation-button {
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  opacity: 0.7;
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.location__geolocation-button::before {
+  content: "";
+  display: block;
+  width: 25px;
+  height: 25px;
+  background-image: url(../../img/location.png);
+  margin-right: 5px;
+  padding-top: 7px;
+}

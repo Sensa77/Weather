@@ -11,11 +11,11 @@ const Characteristics = () => {
         </li>
         <li className="characteristics__item">
           <span className="characteristics__item-title">Давление</span>
-          <span className="characteristics__item-value">1015 рт./ст.</span>
+          <span className="characteristics__item-value">1015 рт.ст.</span>
         </li>
         <li className="characteristics__item">
           <span className="characteristics__item-title">Влажность</span>
-          <span className="characteristics__item-value">92 рт./ст.</span>
+          <span className="characteristics__item-value">92 рт.ст.</span>
         </li>
         <li className="characteristics__item">
           <span className="characteristics__item-title">Облачность</span>
