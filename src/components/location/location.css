@@ -11,14 +11,6 @@
   align-items: center;
 }
 
-.location__input {
-  display: none;
-}
-
-.location__button {
-  display: none;
-}
-
 .location__label {
   opacity: 0.7;
   font-size: 16px;
