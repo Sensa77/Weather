@@ -45,13 +45,14 @@ const appSlice = createSlice({
       state.status = "done";
       state.characteristics = action.payload;
     },
-    [getWeatherData.re]: (state) => {
+    [getWeatherData.rejected]: (state) => {
       state.status = "error";
     },
   },
 });
 
 export const { changeCity, changeTemperature } = appSlice.actions;
+export const statusSelector = (state) => state.app.status;
 export const temperatureSelector = (state) => state.app.temperature;
 export const characteristicsSelector = (state) => state.app.characteristics;
 export const citySelector = (state) => state.app.city;
