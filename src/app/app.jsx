@@ -17,8 +17,9 @@ const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getWeatherData());
-  }, []);
+  }, [city]);
   const status = useSelector(statusSelector);
+
   return (
     <div className="app">
       {status === "error" && <Error />}

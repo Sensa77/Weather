@@ -12,9 +12,8 @@ const Degree = () => {
           value="celsium"
           name="button"
           id="celsium"
-          checked
         ></input>
-        <label className="degree__type degree__celsius" for="celsium">
+        <label className="degree__type degree__celsius" htmlFor="celsium">
           C
         </label>
 
@@ -25,7 +24,7 @@ const Degree = () => {
           name="button"
           id="fahrenheit"
         ></input>
-        <label className="degree__type degree__fahrenheit" for="fahrenheit">
+        <label className="degree__type degree__fahrenheit" htmlFor="fahrenheit">
           F
         </label>
       </form>

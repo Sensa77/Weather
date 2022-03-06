@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 
 const Location = () => {
   const dispatch = useDispatch();
+  const [cityName, setCityName] = useState("");
   const city = useSelector(citySelector);
   const [isSearch, setIsSearch] = useState(false);
   return (
@@ -19,19 +20,26 @@ const Location = () => {
               type="text"
               placeholder="Введите город"
               id="loc"
-              onChange={(e) => dispatch(changeCity(e.target.value))}
+              onChange={(e) => setCityName(e.target.value)}
               onKeyPress={(e) => {
                 if (e.key === "Enter") {
                   e.preventDefault();
-                  dispatch(changeCity(e.target.value));
                   setIsSearch(false);
+                  if (cityName === "") {
+                    return city;
+                  } else dispatch(changeCity(cityName));
                 }
               }}
             ></input>
             <button
               type="button"
               className="location__button"
-              onClick={() => setIsSearch(false)}
+              onClick={() => {
+                setIsSearch(false);
+                if (cityName === "") {
+                  return city;
+                } else dispatch(changeCity(cityName));
+              }}
             >
               OK
             </button>
