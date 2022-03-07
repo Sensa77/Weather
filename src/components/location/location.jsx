@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import "./location.css";
 import { useDispatch } from "react-redux";
-import { changeCity } from "../../app/appSlice";
+import { changeCity, geoSelector, getWeatherData } from "../../app/appSlice";
 import { citySelector } from "../../app/appSlice";
 import { useSelector } from "react-redux";
 
 const Location = () => {
   const dispatch = useDispatch();
-  const [cityName, setCityName] = useState("");
   const city = useSelector(citySelector);
+  const [cityName, setCityName] = useState(city);
+  const geo = useSelector(geoSelector);
   const [isSearch, setIsSearch] = useState(false);
+
+  const changeWeather = (cityName) => {
+    dispatch(changeCity(cityName));
+    dispatch(getWeatherData());
+  };
   return (
     <div className="location">
       {isSearch ? (
@@ -27,7 +33,9 @@ const Location = () => {
                   setIsSearch(false);
                   if (cityName === "") {
                     return city;
-                  } else dispatch(changeCity(cityName));
+                  } else {
+                    changeWeather(cityName);
+                  }
                 }
               }}
             ></input>
@@ -38,7 +46,9 @@ const Location = () => {
                 setIsSearch(false);
                 if (cityName === "") {
                   return city;
-                } else dispatch(changeCity(cityName));
+                } else {
+                  changeWeather(cityName);
+                }
               }}
             >
               OK
@@ -58,7 +68,13 @@ const Location = () => {
         >
           Сменить город
         </button>
-        <button type="button" className="location__geolocation-button">
+        <button
+          type="button"
+          className="location__geolocation-button"
+          onClick={() => {
+            changeWeather(geo.city || cityName);
+          }}
+        >
           Мое местоположение
         </button>
       </div>

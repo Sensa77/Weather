@@ -4,7 +4,7 @@ import Header from "../components/header/header";
 import Main from "../components/main/main";
 import Characteristics from "../components/characteristics/characteristics";
 import { useSelector } from "react-redux";
-import { statusSelector } from "./appSlice";
+import { getGeolocation, statusSelector } from "./appSlice";
 import Loader from "../components/loader/loader";
 import { useDispatch } from "react-redux";
 import { citySelector } from "./appSlice";
@@ -13,12 +13,12 @@ import { useEffect } from "react";
 import Error from "../components/error/error";
 
 const App = () => {
-  const city = useSelector(citySelector);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getWeatherData());
-  }, [city]);
   const status = useSelector(statusSelector);
+  const dispatch = useDispatch();
+  useEffect(async () => {
+    await dispatch(getGeolocation());
+    dispatch(getWeatherData());
+  }, []);
 
   return (
     <div className="app">

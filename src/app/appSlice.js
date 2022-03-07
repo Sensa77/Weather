@@ -1,12 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getCity } from "../utils/api";
+import { getCity, getGeo } from "../utils/api";
 
 let initialState = {
-  city: "Краснодар",
+  city: "Москва",
   temperature: 0,
   characteristics: [],
   status: "no-status",
   error: null,
+  geo: {},
 };
 
 export const getWeatherData = createAsyncThunk(
@@ -24,6 +25,15 @@ export const getWeatherData = createAsyncThunk(
     } catch (err) {}
   }
 );
+
+export const getGeolocation = createAsyncThunk("getGeolocation", async () => {
+  try {
+    const response = await fetch(getGeo());
+    const geo = await response.json();
+    return geo;
+  } finally {
+  }
+});
 
 const appSlice = createSlice({
   name: "app",
@@ -48,10 +58,19 @@ const appSlice = createSlice({
       state.status = "error";
       state.error = action.payload;
     },
+    [getGeolocation.pending]: (state) => {
+      state.status = "loading";
+    },
+    [getGeolocation.fulfilled]: (state, action) => {
+      state.geo = action.payload;
+      state.city = action.payload.city;
+    },
+    [getGeolocation.rejected]: (state) => {},
   },
 });
 
 export const { changeCity, changeTemperature } = appSlice.actions;
+export const geoSelector = (state) => state.app.geo;
 export const errorSelector = (state) => state.app.error;
 export const statusSelector = (state) => state.app.status;
 export const temperatureSelector = (state) => state.app.temperature;
