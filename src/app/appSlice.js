@@ -8,6 +8,8 @@ let initialState = {
   status: "no-status",
   error: null,
   geo: {},
+  celsius: true,
+  fahrenheit: false,
 };
 
 export const getWeatherData = createAsyncThunk(
@@ -45,6 +47,14 @@ const appSlice = createSlice({
     getTemperature: (state, action) => {
       state.temperature = action.payload;
     },
+    changeCelsius: (state) => {
+      state.error = false;
+      state.celsius = true;
+    },
+    changeFahrenheit: (state) => {
+      state.celsius = false;
+      state.fahrenheit = true;
+    },
   },
   extraReducers: {
     [getWeatherData.pending]: (state) => {
@@ -69,7 +79,14 @@ const appSlice = createSlice({
   },
 });
 
-export const { changeCity, changeTemperature } = appSlice.actions;
+export const {
+  changeCity,
+  changeTemperature,
+  changeCelsius,
+  changeFahrenheit,
+} = appSlice.actions;
+export const celsiusSelector = (state) => state.app.celsius;
+export const fahrenheitSelector = (state) => state.app.fahrenheit;
 export const geoSelector = (state) => state.app.geo;
 export const errorSelector = (state) => state.app.error;
 export const statusSelector = (state) => state.app.status;
